@@ -13,12 +13,14 @@ import com.example.destek.DB.viewModel.CategoryViewModel;
 import com.example.destek.Interface.OnRecyclerViewClick;
 import com.example.destek.R;
 import com.example.destek.Utils.Const;
+import com.example.destek.Utils.GridSpacingItemDecoration;
 
 import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 
 public class CategoriesListActivity extends BasicActivity implements OnRecyclerViewClick, View.OnClickListener {
@@ -52,6 +54,10 @@ public class CategoriesListActivity extends BasicActivity implements OnRecyclerV
 
         mAdapter = new CategoryAdapter(this, this);
         recyclerView.setAdapter(mAdapter);
+        int spanCount = 2; // 3 columns
+        int spacing = 50; // 50px
+        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, true));
 
         categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
         categoryViewModel.getAllItem().observe(CategoriesListActivity.this, new Observer<List<Category>>() {

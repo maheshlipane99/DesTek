@@ -45,6 +45,21 @@ public class ProductViewModel extends AndroidViewModel implements ProductDao {
     }
 
     @Override
+    public int setShareCount(int id, int shareCount) {
+        return mProductRepo.setShareCount(id, shareCount);
+    }
+
+    @Override
+    public int setOrderCount(int id, int orderCount) {
+        return mProductRepo.setOrderCount(id,orderCount);
+    }
+
+    @Override
+    public int setViewsCount(int id, int viewsCount) {
+        return mProductRepo.setViewsCount(id,viewsCount);
+    }
+
+    @Override
     public void insertItem(final Product Product) {
         mProductRepo.insertItem(Product);
     }
@@ -59,6 +74,21 @@ public class ProductViewModel extends AndroidViewModel implements ProductDao {
     @Override
     public int deleteAllItem() {
         return mProductRepo.deleteAllItem();
+    }
+
+    @Override
+    public LiveData<List<Product>> getMostViewedProduct() {
+        return mProductRepo.getMostViewedProduct();
+    }
+
+    @Override
+    public LiveData<List<Product>> getMostSharedProduct() {
+        return mProductRepo.getMostSharedProduct();
+    }
+
+    @Override
+    public LiveData<List<Product>> getMostOrderedProduct() {
+        return mProductRepo.getMostOrderedProduct();
     }
 
 }

@@ -15,8 +15,9 @@ public class Product {
     String name;
     Date date_added;
     int CategoryId;
-    int order_count=0;
-    int view_count=0;
+    int order_count;
+    int view_count;
+    int shares;
 
     @Ignore
     List<Variant> variants;
@@ -85,5 +86,13 @@ public class Product {
 
     public void setView_count(int view_count) {
         this.view_count = view_count;
+    }
+
+    public int getShares() {
+        return shares;
+    }
+
+    public void setShares(int shares) {
+        this.shares = shares;
     }
 }

@@ -51,9 +51,14 @@ public class VariantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             if (data != null) {
                 viewHolder.textColor.setText(data.getColor());
-                viewHolder.textSize.setText(data.getSize());
+                viewHolder.textSize.setText(data.getSize()+"");
                 viewHolder.textPrice.setText("Rs."+data.getPrice());
 
+                if (data.getSize()==0){
+                    viewHolder.layoutSize.setVisibility(View.GONE);
+                }else {
+                    viewHolder.layoutSize.setVisibility(View.VISIBLE);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -114,7 +119,7 @@ public class VariantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
         TextView textColor,textSize,textPrice;
-        LinearLayout rootView;
+        LinearLayout rootView,layoutSize;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -123,6 +128,7 @@ public class VariantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             textSize = (TextView)itemView.findViewById(R.id.textSize);
             textPrice = (TextView)itemView.findViewById(R.id.textPrice);
             rootView = (LinearLayout)itemView.findViewById(R.id.rootView);
+            layoutSize = itemView.findViewById(R.id.layoutSize);
 
             rootView.setOnClickListener(new View.OnClickListener() {
                 @Override

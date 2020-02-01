@@ -1,8 +1,6 @@
 package com.example.destek.DB.dao;
 
 
-
-
 import com.example.destek.DB.tabels.Product;
 
 import java.util.List;
@@ -29,6 +27,15 @@ public interface ProductDao {
     @Query("SELECT COUNT(*) from Product")
     int itemCount();
 
+    @Query("UPDATE  Product SET shares=:shareCount where id=:id")
+    int setShareCount(int id, int shareCount);
+
+    @Query("UPDATE  Product SET order_count=:orderCount where id=:id")
+    int setOrderCount(int id, int orderCount);
+
+    @Query("UPDATE  Product SET view_count=:viewsCount where id=:id")
+    int setViewsCount(int id, int viewsCount);
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertItem(Product product);
 
@@ -37,4 +44,14 @@ public interface ProductDao {
 
     @Query("DELETE FROM Product")
     int deleteAllItem();
+
+    @Query("SELECT * FROM Product ORDER BY view_count DESC LIMIT 10")
+    LiveData<List<Product>> getMostViewedProduct();
+
+    @Query("SELECT * FROM Product ORDER BY shares DESC LIMIT 10 ")
+    LiveData<List<Product>> getMostSharedProduct();
+
+    @Query("SELECT * FROM Product ORDER BY order_count DESC LIMIT 10")
+    LiveData<List<Product>> getMostOrderedProduct();
+
 }

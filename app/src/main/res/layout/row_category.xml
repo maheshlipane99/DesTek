@@ -4,41 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:layout_marginBottom="1dp"
-    android:background="#fff"
     android:clickable="true"
     android:orientation="vertical"
     android:paddingLeft="0dp">
 
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp">
+        app:cardBackgroundColor="#ffff"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="7dp"
+        app:contentPadding="7dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
+                android:layout_height="match_parent"
                 tools:text="name"
-                android:textSize="18dp" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
-    </RelativeLayout>
-
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="0.3dp"
-        android:background="@color/divider" />
-
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

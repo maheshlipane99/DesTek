@@ -24,7 +24,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 
 @Database(entities = {
-         Category.class, Product.class, Tax.class, Variant.class}, version =5, exportSchema = false)
+         Category.class, Product.class, Tax.class, Variant.class}, version =1, exportSchema = false)
 @TypeConverters({DateConverter.class, ArrayListConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 

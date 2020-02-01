@@ -52,6 +52,8 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             if (data != null) {
                 viewHolder.textName.setText(data.getName());
+                viewHolder.textShare.setText(data.getShares()+"");
+                viewHolder.textViews.setText(data.getView_count()+"");
                 viewHolder.textDate.setText(Common.getStringDate(data.getDate_added()));
 
             }
@@ -113,7 +115,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        TextView textName,textDate;
+        TextView textName,textDate,textViews,textShare;
         LinearLayout rootView;
 
         public ViewHolder(View itemView) {
@@ -121,6 +123,8 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             textName = (TextView)itemView.findViewById(R.id.textName);
             textDate = (TextView)itemView.findViewById(R.id.textDate);
+            textViews = (TextView)itemView.findViewById(R.id.textViews);
+            textShare = (TextView)itemView.findViewById(R.id.textShare);
             rootView = (LinearLayout)itemView.findViewById(R.id.rootView);
 
             rootView.setOnClickListener(new View.OnClickListener() {

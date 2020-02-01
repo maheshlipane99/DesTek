@@ -36,21 +36,17 @@ public class ProductRepo implements ProductDao {
     private final String TAG = ProductRepo.class.getSimpleName();
 
     private final ProductDao productDao;
-    private final VariantDao variantDao;
-    private final TaxDao taxDao;
     Application application;
 
     @Inject
     public ProductRepo(Application application) {
         this.productDao = AppDatabase.getAppDatabase(application).getProductDao();
-        this.variantDao = AppDatabase.getAppDatabase(application).getVariantDao();
-        this.taxDao = AppDatabase.getAppDatabase(application).getTaxDao();
         this.application = application;
     }
 
 
     @Override
-        public LiveData<List<Product>> getAllItem() {
+    public LiveData<List<Product>> getAllItem() {
         return productDao.getAllItem();
     }
 
@@ -70,20 +66,28 @@ public class ProductRepo implements ProductDao {
     }
 
     @Override
+    public int setShareCount(int id, int shareCount) {
+        return productDao.setShareCount(id, shareCount);
+    }
+
+    @Override
+    public int setOrderCount(int id, int orderCount) {
+        return productDao.setOrderCount(id,orderCount);
+    }
+
+    @Override
+    public int setViewsCount(int id, int viewsCount) {
+        return productDao.setViewsCount(id,viewsCount);
+    }
+
+    @Override
     public void insertItem(final Product product) {
+        Log.i(TAG, "insertItem: " + new Gson().toJson(product));
         Handler mHandler = new Handler();
         mHandler.post(new Runnable() {
             @Override
             public void run() {
                 productDao.insertItem(product);
-                for (int i = 0; i < product.getVariants().size(); i++) {
-                    Variant mVariant=product.getVariants().get(i);
-                    mVariant.setProductId(product.getId());
-                    variantDao.insertItem(mVariant);
-                }
-                Tax mTax=product.getTax();
-                mTax.setProductId(product.getId());
-                taxDao.insertItem(mTax);
             }
         });
     }
@@ -104,6 +108,21 @@ public class ProductRepo implements ProductDao {
     @Override
     public int deleteAllItem() {
         return productDao.deleteAllItem();
+    }
+
+    @Override
+    public LiveData<List<Product>> getMostViewedProduct() {
+        return productDao.getMostViewedProduct();
+    }
+
+    @Override
+    public LiveData<List<Product>> getMostSharedProduct() {
+        return productDao.getMostSharedProduct();
+    }
+
+    @Override
+    public LiveData<List<Product>> getMostOrderedProduct() {
+        return productDao.getMostOrderedProduct();
     }
 
 }

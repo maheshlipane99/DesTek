@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -44,7 +48,13 @@ dependencies {
     annotationProcessor 'android.arch.lifecycle:compiler:1.1.1'
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
+
     // For control over item selection of both touch and mouse driven selection
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-beta01"
     implementation "androidx.cardview:cardview:1.0.0"
+
+    //For easy view initialization
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 }
+

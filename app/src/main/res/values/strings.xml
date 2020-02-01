@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Destek</string>
-    <string name="label_tax">Tax</string>
+    <string name="label_tax">Tax : </string>
     <string name="label_details">Details</string>
     <string name="label_variant">Variants</string>
+    <string name="label_order">Ordered : </string>
+    <string name="label_share">Share : </string>
+    <string name="label_views">Views :</string>
+    <string name="btn_shop_by_category">Shop by Categories</string>
+    <string name="btn_top_view_products">Top 10 most view Product</string>
+    <string name="btn_top_share_products">Top 10 most shared Product</string>
+    <string name="btn_top_order_products">Top 10 most ordered Product</string>
 </resources>
